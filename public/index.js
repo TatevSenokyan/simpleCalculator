@@ -4,8 +4,14 @@ let outputClone='';
 let arr=[];
 let finalResult=0;
    function addEventValue(event) {
-      let value=event.target.innerHTML;
-      
+     let value
+  if(typeof(event)=='string') {
+      value=event
+  } else {
+    value=event.target.innerHTML;
+  }
+   
+      if(!(typeof(event)=='string')) {
         if(event.target.className=='divide') {
           output+='/'
         } else if(event.target.className=='times') {
@@ -13,6 +19,10 @@ let finalResult=0;
         } else {
           output+=value
         }
+      } else {
+        output+=value
+      }
+      
       
       outputClone+=value;
       document.getElementById('screen').innerHTML=outputClone;  
@@ -235,5 +245,21 @@ function calcPercent() {
 }
   
 
-  
-   
+  // adding keyboard events
+
+   document.onkeyup=e=>{
+     if(e.key=='0' || e.key=='1' || e.key=='2' || e.key=='3' || e.key=='4' || e.key=='5' || e.key=='6'
+     || e.key=='7' || e.key=='8' || e.key=='9' || e.key=='.' || e.key=='-' || e.key=='+' || e.key=='/' || e.key=='*'
+     ) {
+       addEventValue(e.key)
+     } else if (e.key=='=' || e.key=='Enter') {
+       result()
+     } else if (e.key=='*' || e.key=='Num*') {
+      addEventValue(e.key)
+     } else if (e.key=='c' || e.key=='C') {
+       clearResult ()
+     } else if (e.key=='%') {
+       calcPercent()
+     }
+
+   }
