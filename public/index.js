@@ -87,8 +87,8 @@ let finalResult=0;
         
         
   function  result() {
-      // console.log('output',output)
-      // console.log('outputclone',outputClone)  
+      console.log('output',output)
+      console.log('outputclone',outputClone)  
       arr=[];
       let i;
 
@@ -125,11 +125,17 @@ let finalResult=0;
                     i=j-1
                     break inner;
                  }
-             }   
+             } else {
+               if(j==output.length-1) {
+                let a=output.slice(i)
+                arr.push(a)
+                break outer
+               }
+             }  
          }
      }
 }
-// console.log('arr',arr)
+console.log('arr',arr)
 
 if(arr[0]=="+" || arr[0]=='-') {
   arr.splice(0,2,arr[0]+arr[1])
