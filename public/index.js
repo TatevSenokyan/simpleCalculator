@@ -87,8 +87,8 @@ let finalResult=0;
         
         
   function  result() {
-      console.log('output',output)
-      console.log('outputclone',outputClone)  
+      // console.log('output',output)
+      // console.log('outputclone',outputClone)  
       arr=[];
       let i;
 
@@ -135,7 +135,7 @@ let finalResult=0;
          }
      }
 }
-console.log('arr',arr)
+// console.log('arr',arr)
 
 if(arr[0]=="+" || arr[0]=='-') {
   arr.splice(0,2,arr[0]+arr[1])
@@ -178,9 +178,19 @@ addEventValue(arr)
               } 
         }
 
-         document.getElementById('screen').innerHTML=finalResult 
-         output=finalResult;
-         outputClone=finalResult
+        
+         if(`${finalResult}`.length>5) {
+          document.getElementById('screen').innerHTML=finalResult.toFixed(2) 
+          output=finalResult.toFixed(2);
+          outputClone=finalResult.toFixed(2)
+         } else {
+          document.getElementById('screen').innerHTML=finalResult
+          output=finalResult;
+          outputClone=finalResult
+         }
+         
+         
+         
          finalResult=0;
          arr=[]
 } 
